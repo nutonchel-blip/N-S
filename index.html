@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N | S — Luxury Fashion Atelier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-charcoal: #121212;
+            --bg-surface: #1a1a1a;
+            --beige-soft: #D4C5B9;
+            --cream: #F9F8F6;
+            --plum-deep: #2A171F;
+            --accent-border: rgba(212, 197, 185, 0.15);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-charcoal);
+            color: var(--cream);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Background Rotating Nightshade Floral Element */
+        .bg-nightshade-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 85vmax;
+            height: 85vmax;
+            transform: translate(-50%, -50%) rotate(0deg);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.07;
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        .bg-nightshade-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 40px var(--plum-deep));
+        }
+
+        h1, h2, h3, h4, .logo-text {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--accent-border);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 1.2rem 4rem;
+            background: rgba(18, 18, 18, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 38px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            letter-spacing: 0.2em;
+            color: var(--beige-soft);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: var(--transition);
+            opacity: 0.7;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background-color: var(--beige-soft);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--beige-soft);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(rgba(18,18,18,0.4), rgba(18,18,18,0.85)), 
+                        radial-gradient(circle at center, var(--plum-deep) 0%, var(--bg-charcoal) 80%);
+            position: relative;
+            z-index: 1;
+            will-change: transform;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--beige-soft);
+            margin-bottom: 1rem;
+            letter-spacing: 0.3em;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            color: var(--cream);
+            opacity: 0;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            transform: translateY(30px);
+            animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+        }
+
+        .hero .btn {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.1rem 3rem;
+            border: 1px solid var(--beige-soft);
+            color: var(--beige-soft);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            transition: var(--transition);
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--beige-soft);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--bg-charcoal);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        /* Sections General */
+        .section {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--beige-soft);
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--beige-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        /* Boutique Display */
+        .boutique-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--accent-border);
+            padding: 3rem;
+            border-radius: 4px;
+        }
+
+        .boutique-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .boutique-card {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .boutique-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: var(--transition);
+            filter: brightness(0.85);
+        }
+
+        .boutique-card:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .boutique-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--beige-soft);
+            letter-spacing: 0.1em;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--accent-border);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+        }
+
+        .product-card:hover {
+            border-color: var(--beige-soft);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        .product-img-wrapper {
+            height: 380px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            opacity: 0.88;
+        }
+
+        .product-card:hover img {
+            opacity: 1;
+            transform: scale(1.06);
+        }
+
+        .product-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            color: var(--beige-soft);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--accent-border);
+            padding-top: 1rem;
+        }
+
+        .product-price {
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            color: var(--cream);
+        }
+
+        /* Bespoke Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-box {
+            padding: 3rem 2rem;
+            background: rgba(26, 26, 26, 0.5);
+            border: 1px solid var(--accent-border);
+            border-left: 2px solid var(--beige-soft);
+            transition: var(--transition);
+        }
+
+        .service-box:hover {
+            background: var(--bg-surface);
+            transform: translateY(-5px);
+            border-color: var(--beige-soft);
+        }
+
+        .service-box h4 {
+            font-size: 1.2rem;
+            color: var(--beige-soft);
+            margin-bottom: 1rem;
+        }
+
+        .service-box p {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Editorial Banner */
+        .editorial-quote {
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--accent-border);
+            border-bottom: 1px solid var(--accent-border);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .editorial-quote blockquote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            max-width: 850px;
+            margin: 0 auto;
+            color: var(--beige-soft);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Toast Modal */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-surface);
+            border: 1px solid var(--beige-soft);
+            color: var(--cream);
+            padding: 1.2rem 2rem;
+            border-radius: 4px;
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 4rem 3rem 4rem;
+            background: #0a0a0a;
+            border-top: 1px solid var(--accent-border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .footer-col h4 {
+            color: var(--beige-soft);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.15em;
+            font-size: 0.9rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--cream);
+            opacity: 0.5;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+            color: var(--beige-soft);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.3;
+            letter-spacing: 0.1em;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            header, header.scrolled { padding: 1.5rem 2rem; }
+            .about-grid, .boutique-grid, .services-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .section { padding: 5rem 2rem; }
+            .bg-nightshade-container { width: 130vmax; height: 130vmax; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Rotating Background Nightshade SVG -->
+    <div class="bg-nightshade-container" id="bgNightshade">
+        <svg class="bg-nightshade-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#D4C5B9" stroke-width="1.2">
+                <!-- 5 Petals Solanum / Nightshade Star Flower Silhouette -->
+                <path d="M 250 50 Q 280 180 250 250 Q 220 180 250 50 Z" />
+                <path d="M 440 188 Q 320 220 250 250 Q 320 160 440 188 Z" />
+                <path d="M 367 411 Q 290 310 250 250 Q 350 290 367 411 Z" />
+                <path d="M 132 411 Q 150 290 250 250 Q 210 310 132 411 Z" />
+                <path d="M 60 188 Q 180 160 250 250 Q 180 220 60 188 Z" />
+                
+                <!-- Inner Stamen Cone -->
+                <polygon points="250,210 265,240 250,270 235,240" fill="#2A171F" stroke="#D4C5B9" stroke-width="1"/>
+                <circle cx="250" cy="250" r="15" fill="none" stroke="#D4C5B9" stroke-width="1.5" />
+                <circle cx="250" cy="250" r="180" stroke="#D4C5B9" stroke-width="0.5" stroke-dasharray="4 8" />
+                <circle cx="250" cy="250" r="220" stroke="#D4C5B9" stroke-width="0.5" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="#" class="logo-container">
+            
+            <span class="logo-text">N | S</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#about">О Бренде</a></li>
+                <li><a href="#boutique">Бутик</a></li>
+                <li><a href="#collection">Коллекция</a></li>
+                <li><a href="#atelier">Ателье</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <h1>N | S ATELIER</h1>
+        <p>Архитектурная эстетика «Quiet Luxury». Изысканный баланс глубоких темных тонов, мягкого бежа и филигранных деталей с нотками паслёна.</p>
+        <a href="#collection" class="btn">Смотреть Лукбук</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section reveal">
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Философия Ночной Красавицы</h3>
+                <p>Бренд N|S создаёт гардероб для ценителей интеллектуальной элегантности. Наш визуальный код построен на тихой роскоши, безупречных линиях и благородных материалах.</p>
+                <p>Каждая деталь — от кастомной пуговицы с тиснением логотипа до скрытой подкладки с авторским цветком ночного паслёна — подчеркивает таинственную привлекательность своего владельца.</p>
+            </div>
+            <div class="service-box">
+                <h4>Код Бренда</h4>
+                <p>— Глубокие оттенки ночи и графита</p>
+                <p>— Шелковые жаккарды и шерсть высочайшей плотности</p>
+                <p>— Завуалированные растительные вышивки ручной работы</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique Showcase -->
+    <section id="boutique" class="section reveal" style="padding-top: 0;">
+        <div class="section-header">
+            <h2 class="section-title">Флагманский Бутик</h2>
+            <p class="section-subtitle">The Dubai Mall • Пространство Архитектурного Минимализма</p>
+        </div>
+        
+        <div class="boutique-container">
+            <div class="boutique-grid">
+                <div class="boutique-card">
+                    <img src="img/vidsnaruji.png" alt="Экстерьер бутика N|S">
+                    <div class="boutique-caption">Фасад & Вывеска N|S</div>
+                </div>
+                <div class="boutique-card">
+                    <img src="img/vidvnutri.png" alt="Интерьер бутика N|S">
+                    <div class="boutique-caption">Интерьер & Атмосфера</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Gallery -->
+    <section id="collection" class="section">
+        <div class="section-header reveal">
+            <h2 class="section-title">Эксклюзивная Коллекция</h2>
+            <p class="section-subtitle">Избранные предметы сезонной коллекции</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Tovar 1 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar1.png" alt="Шелковый образ N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Образ «Nightshade Silk»</h4>
+                    <p class="product-desc">Полупрозрачная шелковая блуза с тональным растительным принтом и широкими брюками.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">2 400 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tovar 2 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar2.png" alt="Мужская рубашка N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Рубашка «Dark Linen»</h4>
+                    <p class="product-desc">Лен глубокого черного оттенка с аккуратной ручной вышивкой ветви паслёна на воротнике.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">1 850 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tovar 3 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar3.png" alt="Коллекция сумок N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Сумки & Тоуты N|S</h4>
+                    <p class="product-desc">Хлопковые тоуты с монохромной графикой и структурированные кожаные сумки цвета глубокой сливы.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">от 1 200 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tovar 4 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar4.png" alt="Тренч N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Тренч «Midnight»</h4>
+                    <p class="product-desc">Тренч из непромокаемой ткани глубокого темно-синего цвета с шелковой принтованной подкладкой.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">3 600 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tovar 5 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar5.png" alt="Лоферы N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Кожаные Лоферы</h4>
+                    <p class="product-desc">Двухцветные лоферы с тиснением тонкого цветка и латунной плашкой N|S на каблуке.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">1 100 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tovar 6 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar6.png" alt="Туфли N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Лодочки «Midnight Stiletto»</h4>
+                    <p class="product-desc">Глянцевые туфли-лодочки с монограммой бренда и расписной стелькой.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">1 350 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tovar 7 -->
+            <div class="product-card reveal">
+                <div class="product-img-wrapper">
+                    <img src="img/tovar7.png" alt="Брюки жаккард N|S">
+                </div>
+                <div class="product-info">
+                    <h4 class="product-title">Брюки Жаккард N|S</h4>
+                    <p class="product-desc">Плотная костюмная шерсть с легким переливом жаккардового узора паслёна.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">1 950 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atelier / Services -->
+    <section id="atelier" class="section reveal" style="padding-top: 0;">
+        <div class="section-header">
+            <h2 class="section-title">Ателье и Индивидуальный Сервис</h2>
+            <p class="section-subtitle">Создание персональных шедевров</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-box">
+                <h4>Bespoke Пошив</h4>
+                <p>Создание гардероба по индивидуальным меркам с подбором эксклюзивных тканей из Италии и Франции.</p>
+            </div>
+            <div class="service-box">
+                <h4>VIP Консьерж</h4>
+                <p>Примерка и персональная презентация коллекций в любой точке мира или в закрытом VIP-зале бутика.</p>
+            </div>
+            <div class="service-box">
+                <h4>Персонализация</h4>
+                <p>Нанесение инициалов и уникальной ручной вышивки на сумки, обувь и подкладку верхней одежды.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Quote -->
+    <section class="editorial-quote reveal">
+        <blockquote>«Роскошь — это способность вызывать восхищение, не произнося ни слова».</blockquote>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Запрос отправлен. Наш персональный стилист свяжется с вами.</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">N | S ATELIER</h4>
+                <p style="max-width: 300px;">Премиальный дом моды, объединяющий эстетику минимализма, благородство фактур и загадочность растительных мотивов.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Локации</h4>
+                <p>The Dubai Mall, Fashion Avenue</p>
+                <p>Москва, Столешников пер.</p>
+                <p>Париж, Place Vendôme</p>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <a href="mailto:vip@ns-atelier.com">vip@ns-atelier.com</a>
+                <a href="tel:+971000000000">+971 4 000 0000</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 N | S Fashion House. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            const hero = document.getElementById('hero');
+            const toast = document.getElementById('toast');
+            const bgNightshade = document.getElementById('bgNightshade');
+
+            // 1. Scroll-driven Nightshade Rotation & Header Adjustments
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+
+                // Rotate background Nightshade SVG on scroll
+                const rotation = scrollY * 0.12; 
+                bgNightshade.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+                // Header styling
+                if (scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+
+                // Parallax Effect for Hero section
+                if (scrollY < window.innerHeight) {
+                    hero.style.transform = `translateY(${scrollY * 0.25}px)`;
+                }
+            });
+
+            // 2. Scroll Reveal Intersection Observer
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 3. Interactive Buttons Click (Toast feedback)
+            const actionBtns = document.querySelectorAll('.btn-action');
+            actionBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 3500);
+                });
+            });
+
+            // 4. Subtle Tilt Effect on Product Cards
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) translateY(-5px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
