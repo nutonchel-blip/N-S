@@ -37,7 +37,12 @@
             position: relative;
         }
 
-        /* Background Rotating Nightshade Floral Element */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Background Rotating Element */
         .bg-nightshade-container {
             position: fixed;
             top: 50%;
@@ -58,7 +63,7 @@
             filter: drop-shadow(0 0 40px var(--plum-deep));
         }
 
-        h1, h2, h3, h4, .logo-text {
+        h1, h2, h3, h4 {
             font-family: 'Cinzel', serif;
             font-weight: 400;
         }
@@ -85,25 +90,6 @@
             padding: 1.2rem 4rem;
             background: rgba(18, 18, 18, 0.95);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 38px;
-            object-fit: contain;
-            transition: var(--transition);
-        }
-
-        .logo-text {
-            font-size: 1.4rem;
-            letter-spacing: 0.2em;
-            color: var(--beige-soft);
         }
 
         nav ul {
@@ -141,6 +127,39 @@
 
         nav a:hover::after {
             width: 100%;
+        }
+
+        /* Flags */
+        .region-flags {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .flag-btn {
+            background: transparent;
+            border: 1px solid rgba(212, 197, 185, 0.2);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: var(--transition);
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flag-btn svg {
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .flag-btn:hover, .flag-btn.active {
+            opacity: 1;
+            border-color: var(--beige-soft);
+            transform: scale(1.1);
         }
 
         /* Hero */
@@ -230,7 +249,7 @@
             left: 0;
         }
 
-        /* Sections General */
+        /* Section General */
         .section {
             padding: 8rem 4rem;
             max-width: 1400px;
@@ -258,7 +277,6 @@
             letter-spacing: 0.15em;
         }
 
-        /* Scroll Reveal Animation Classes */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -270,7 +288,7 @@
             transform: translateY(0);
         }
 
-        /* About Section */
+        /* About */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -336,7 +354,7 @@
             letter-spacing: 0.1em;
         }
 
-        /* Products Grid */
+        /* Products */
         .products-grid {
             display: grid;
             grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
@@ -409,9 +427,12 @@
             font-size: 0.95rem;
             letter-spacing: 0.1em;
             color: var(--cream);
+            direction: ltr !important;
+            unicode-bidi: isolate;
+            display: inline-block;
         }
 
-        /* Bespoke Services */
+        /* Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -424,6 +445,11 @@
             border: 1px solid var(--accent-border);
             border-left: 2px solid var(--beige-soft);
             transition: var(--transition);
+        }
+
+        body.rtl .service-box {
+            border-left: 1px solid var(--accent-border);
+            border-right: 2px solid var(--beige-soft);
         }
 
         .service-box:hover {
@@ -443,7 +469,111 @@
             opacity: 0.6;
         }
 
-        /* Editorial Banner */
+        /* Lead Request Form */
+        .lead-section {
+            background: linear-gradient(135deg, rgba(42, 23, 31, 0.6) 0%, var(--bg-surface) 100%);
+            border: 1px solid var(--beige-soft);
+            padding: 4rem;
+            border-radius: 4px;
+            max-width: 900px;
+            margin: 4rem auto;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        body.rtl .form-group {
+            text-align: right;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--beige-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            background: rgba(18, 18, 18, 0.8);
+            border: 1px solid var(--accent-border);
+            padding: 1rem 1.2rem;
+            color: var(--cream);
+            font-family: inherit;
+            font-size: 0.95rem;
+            border-radius: 2px;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--beige-soft);
+            box-shadow: 0 0 10px rgba(212, 197, 185, 0.2);
+        }
+
+        /* Locations */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--accent-border);
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .location-card:hover {
+            border-color: var(--beige-soft);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .location-flag-svg {
+            width: 36px;
+            height: 24px;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .location-city {
+            font-size: 1.3rem;
+            color: var(--beige-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        .location-address {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-desc {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 0.05em;
+        }
+
+        /* Quote Banner */
         .editorial-quote {
             background-color: var(--bg-surface);
             border-top: 1px solid var(--accent-border);
@@ -464,27 +594,286 @@
             font-style: italic;
         }
 
+        /* ENHANCED AI ASSISTANT & CHAT SYSTEM */
+        .ai-assistant-wrapper {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2500;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        body.rtl .ai-assistant-wrapper {
+            right: auto;
+            left: 30px;
+            align-items: flex-start;
+        }
+
+        /* Stylish AI Button */
+        .ai-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2A171F 0%, #121212 100%);
+            border: 1px solid var(--beige-soft);
+            color: var(--beige-soft);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(212, 197, 185, 0.2);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .ai-btn::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1px stroke var(--beige-soft);
+            background: radial-gradient(circle, rgba(212,197,185,0.2) 0%, transparent 70%);
+            animation: pulseGlow 3s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(0.95); opacity: 0.4; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+
+        .ai-btn:hover {
+            transform: scale(1.1);
+            border-color: #fff;
+            box-shadow: 0 12px 35px rgba(212, 197, 185, 0.3);
+        }
+
+        .ai-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: none;
+            stroke: var(--beige-soft);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* AI Interactive Chat Box */
+        .ai-chat-box {
+            width: 360px;
+            height: 480px;
+            background: rgba(22, 22, 22, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--beige-soft);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .ai-chat-box.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .chat-header {
+            background: var(--plum-deep);
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--accent-border);
+        }
+
+        .chat-header h4 {
+            color: var(--beige-soft);
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-close-btn {
+            background: none;
+            border: none;
+            color: var(--cream);
+            cursor: pointer;
+            opacity: 0.6;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .chat-close-btn:hover {
+            opacity: 1;
+            color: var(--beige-soft);
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1.2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        .chat-msg {
+            max-width: 82%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            line-height: 1.4;
+            animation: fadeInMsg 0.3s forwards;
+        }
+
+        @keyframes fadeInMsg {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-msg.bot {
+            background: rgba(42, 23, 31, 0.6);
+            border: 1px solid var(--accent-border);
+            color: var(--cream);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .chat-msg.user {
+            background: var(--beige-soft);
+            color: var(--bg-charcoal);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            font-weight: 500;
+        }
+
+        .chat-quick-suggestions {
+            padding: 0.5rem 1rem;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            border-top: 1px solid var(--accent-border);
+            background: rgba(18,18,18,0.5);
+        }
+
+        .chip-btn {
+            background: rgba(212, 197, 185, 0.1);
+            border: 1px solid var(--accent-border);
+            color: var(--beige-soft);
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            border-radius: 12px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chip-btn:hover {
+            background: var(--beige-soft);
+            color: var(--bg-charcoal);
+        }
+
+        .chat-input-area {
+            padding: 0.8rem 1rem;
+            display: flex;
+            gap: 8px;
+            background: rgba(18,18,18,0.9);
+            border-top: 1px solid var(--accent-border);
+        }
+
+        .chat-input {
+            flex-grow: 1;
+            background: transparent;
+            border: 1px solid var(--accent-border);
+            color: var(--cream);
+            padding: 0.6rem 0.9rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--beige-soft);
+        }
+
+        .chat-send-btn {
+            background: var(--beige-soft);
+            border: none;
+            color: var(--bg-charcoal);
+            padding: 0 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .chat-send-btn:hover {
+            background: #fff;
+        }
+
+        /* Initial Greeting Floating Bubble */
+        .ai-bubble {
+            background: var(--bg-surface);
+            border: 1px solid var(--beige-soft);
+            color: var(--cream);
+            padding: 1rem 1.3rem;
+            border-radius: 12px;
+            border-bottom-right-radius: 2px;
+            max-width: 250px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            transition: var(--transition);
+            pointer-events: none;
+            cursor: pointer;
+        }
+
+        body.rtl .ai-bubble {
+            border-bottom-right-radius: 12px;
+            border-bottom-left-radius: 2px;
+        }
+
+        .ai-bubble.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
         /* Toast Modal */
         .toast {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
             background: var(--bg-surface);
             border: 1px solid var(--beige-soft);
             color: var(--cream);
             padding: 1.2rem 2rem;
             border-radius: 4px;
-            z-index: 2000;
-            transform: translateY(100px);
+            z-index: 3000;
             opacity: 0;
             transition: var(--transition);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             font-size: 0.85rem;
             letter-spacing: 0.1em;
+            text-align: center;
+            pointer-events: none;
         }
 
         .toast.show {
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
 
@@ -543,6 +932,8 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .hero h1 { font-size: 2.8rem; }
             .section { padding: 5rem 2rem; }
+            .lead-section { padding: 2.5rem 1.5rem; }
+            .ai-chat-box { width: 310px; height: 420px; }
             .bg-nightshade-container { width: 130vmax; height: 130vmax; }
         }
     </style>
@@ -553,14 +944,11 @@
     <div class="bg-nightshade-container" id="bgNightshade">
         <svg class="bg-nightshade-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g stroke="#D4C5B9" stroke-width="1.2">
-                <!-- 5 Petals Solanum / Nightshade Star Flower Silhouette -->
                 <path d="M 250 50 Q 280 180 250 250 Q 220 180 250 50 Z" />
                 <path d="M 440 188 Q 320 220 250 250 Q 320 160 440 188 Z" />
                 <path d="M 367 411 Q 290 310 250 250 Q 350 290 367 411 Z" />
                 <path d="M 132 411 Q 150 290 250 250 Q 210 310 132 411 Z" />
                 <path d="M 60 188 Q 180 160 250 250 Q 180 220 60 188 Z" />
-                
-                <!-- Inner Stamen Cone -->
                 <polygon points="250,210 265,240 250,270 235,240" fill="#2A171F" stroke="#D4C5B9" stroke-width="1"/>
                 <circle cx="250" cy="250" r="15" fill="none" stroke="#D4C5B9" stroke-width="1.5" />
                 <circle cx="250" cy="250" r="180" stroke="#D4C5B9" stroke-width="0.5" stroke-dasharray="4 8" />
@@ -571,40 +959,68 @@
 
     <!-- Header -->
     <header id="header">
-        <a href="#" class="logo-container">
-            
-            <span class="logo-text">N | S</span>
-        </a>
         <nav>
             <ul>
-                <li><a href="#about">О Бренде</a></li>
-                <li><a href="#boutique">Бутик</a></li>
-                <li><a href="#collection">Коллекция</a></li>
-                <li><a href="#atelier">Ателье</a></li>
+                <li><a href="#about" data-i18n="nav-about">О Бренде</a></li>
+                <li><a href="#boutique" data-i18n="nav-boutique">Бутик</a></li>
+                <li><a href="#collection" data-i18n="nav-collection">Коллекция</a></li>
+                <li><a href="#request-section" data-i18n="nav-request">Заявка</a></li>
+                <li><a href="#locations" data-i18n="nav-locations">Где нас найти</a></li>
             </ul>
         </nav>
+
+        <!-- SVG Flag Buttons (EN, RU, AR) -->
+        <div class="region-flags">
+            <button class="flag-btn" id="lang-en" title="English">
+                <svg viewBox="0 0 60 30">
+                    <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                    <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" clip-path="url(#s)"/>
+                    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2" clip-path="url(#s)"/>
+                    <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" clip-path="url(#s)"/>
+                    <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" clip-path="url(#s)"/>
+                </svg>
+            </button>
+
+            <button class="flag-btn active" id="lang-ru" title="Русский">
+                <svg viewBox="0 0 900 600">
+                    <rect fill="#fff" width="900" height="600"/>
+                    <rect fill="#d52b1e" y="400" width="900" height="200"/>
+                    <rect fill="#0039a6" y="200" width="900" height="200"/>
+                </svg>
+            </button>
+
+            <button class="flag-btn" id="lang-ar" title="العربية">
+                <svg viewBox="0 0 1200 600">
+                    <rect width="1200" height="200" fill="#00732f"/>
+                    <rect y="200" width="1200" height="200" fill="#fff"/>
+                    <rect y="400" width="1200" height="200" fill="#000"/>
+                    <rect width="300" height="600" fill="#ff0000"/>
+                </svg>
+            </button>
+        </div>
     </header>
 
     <!-- Hero -->
     <section class="hero" id="hero">
-        <h1>N | S ATELIER</h1>
-        <p>Архитектурная эстетика «Quiet Luxury». Изысканный баланс глубоких темных тонов, мягкого бежа и филигранных деталей с нотками паслёна.</p>
-        <a href="#collection" class="btn">Смотреть Лукбук</a>
+        <h1 data-i18n="hero-title">N | S ATELIER</h1>
+        <p data-i18n="hero-desc">Архитектурная эстетика «Quiet Luxury». Изысканный баланс глубоких темных тонов, мягкого бежа и филигранных деталей с нотками паслёна.</p>
+        <a href="#collection" class="btn" data-i18n="hero-btn">Смотреть Лукбук</a>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section reveal">
         <div class="about-grid">
             <div class="about-text">
-                <h3>Философия Ночной Красавицы</h3>
-                <p>Бренд N|S создаёт гардероб для ценителей интеллектуальной элегантности. Наш визуальный код построен на тихой роскоши, безупречных линиях и благородных материалах.</p>
-                <p>Каждая деталь — от кастомной пуговицы с тиснением логотипа до скрытой подкладки с авторским цветком ночного паслёна — подчеркивает таинственную привлекательность своего владельца.</p>
+                <h3 data-i18n="about-title">Философия Ночной Красавицы</h3>
+                <p data-i18n="about-p1">Бренд N|S создаёт гардероб для ценителей интеллектуальной элегантности. Наш визуальный код построен на тихой роскоши, безупречных линиях и благородных материалах.</p>
+                <p data-i18n="about-p2">Каждая деталь — от кастомной пуговицы с тиснением логотипа до скрытой подкладки с авторским цветком ночного паслёна — подчеркивает таинственную привлекательность своего владельца.</p>
             </div>
             <div class="service-box">
-                <h4>Код Бренда</h4>
-                <p>— Глубокие оттенки ночи и графита</p>
-                <p>— Шелковые жаккарды и шерсть высочайшей плотности</p>
-                <p>— Завуалированные растительные вышивки ручной работы</p>
+                <h4 data-i18n="code-title">Код Бренда</h4>
+                <p data-i18n="code-1">— Глубокие оттенки ночи и графита</p>
+                <p data-i18n="code-2">— Шелковые жаккарды и шерсть высочайшей плотности</p>
+                <p data-i18n="code-3">— Завуалированные растительные вышивки ручной работы</p>
             </div>
         </div>
     </section>
@@ -612,19 +1028,19 @@
     <!-- Boutique Showcase -->
     <section id="boutique" class="section reveal" style="padding-top: 0;">
         <div class="section-header">
-            <h2 class="section-title">Флагманский Бутик</h2>
-            <p class="section-subtitle">The Dubai Mall • Пространство Архитектурного Минимализма</p>
+            <h2 class="section-title" data-i18n="boutique-title">Флагманский Бутик</h2>
+            <p class="section-subtitle" data-i18n="boutique-subtitle">The Dubai Mall • Пространство Архитектурного Минимализма</p>
         </div>
         
         <div class="boutique-container">
             <div class="boutique-grid">
                 <div class="boutique-card">
                     <img src="img/vidsnaruji.png" alt="Экстерьер бутика N|S">
-                    <div class="boutique-caption">Фасад & Вывеска N|S</div>
+                    <div class="boutique-caption" data-i18n="cap-exterior">Фасад & Вывеска N|S</div>
                 </div>
                 <div class="boutique-card">
                     <img src="img/vidvnutri.png" alt="Интерьер бутика N|S">
-                    <div class="boutique-caption">Интерьер & Атмосфера</div>
+                    <div class="boutique-caption" data-i18n="cap-interior">Интерьер & Атмосфера</div>
                 </div>
             </div>
         </div>
@@ -633,112 +1049,91 @@
     <!-- Products Gallery -->
     <section id="collection" class="section">
         <div class="section-header reveal">
-            <h2 class="section-title">Эксклюзивная Коллекция</h2>
-            <p class="section-subtitle">Избранные предметы сезонной коллекции</p>
+            <h2 class="section-title" data-i18n="coll-title">Эксклюзивная Коллекция</h2>
+            <p class="section-subtitle" data-i18n="coll-subtitle">Избранные предметы сезонной коллекции</p>
         </div>
 
         <div class="products-grid">
-            <!-- Tovar 1 -->
             <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar1.png" alt="Шелковый образ N|S">
-                </div>
+                <div class="product-img-wrapper"><img src="img/tovar1.png" alt="Item"></div>
                 <div class="product-info">
-                    <h4 class="product-title">Образ «Nightshade Silk»</h4>
-                    <p class="product-desc">Полупрозрачная шелковая блуза с тональным растительным принтом и широкими брюками.</p>
+                    <h4 class="product-title" data-i18n="t1-title">Образ «Nightshade Silk»</h4>
+                    <p class="product-desc" data-i18n="t1-desc">Полупрозрачная шелковая блуза с тональным растительным принтом и широкими брюками.</p>
                     <div class="product-bottom">
-                        <span class="product-price">2 400 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                        <span class="product-price">1 250 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Tovar 2 -->
             <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar2.png" alt="Мужская рубашка N|S">
-                </div>
+                <div class="product-img-wrapper"><img src="img/tovar2.png" alt="Item"></div>
                 <div class="product-info">
-                    <h4 class="product-title">Рубашка «Dark Linen»</h4>
-                    <p class="product-desc">Лен глубокого черного оттенка с аккуратной ручной вышивкой ветви паслёна на воротнике.</p>
+                    <h4 class="product-title" data-i18n="t2-title">Рубашка «Dark Linen»</h4>
+                    <p class="product-desc" data-i18n="t2-desc">Лен глубокого черного оттенка с аккуратной ручной вышивкой ветви паслёна на воротнике.</p>
+                    <div class="product-bottom">
+                        <span class="product-price">950 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-img-wrapper"><img src="img/tovar3.png" alt="Item"></div>
+                <div class="product-info">
+                    <h4 class="product-title" data-i18n="t3-title">Сумки & Тоуты N|S</h4>
+                    <p class="product-desc" data-i18n="t3-desc">Хлопковые тоуты с монохромной графикой и структурированные кожаные сумки цвета глубокой сливы.</p>
+                    <div class="product-bottom">
+                        <span class="product-price"><span data-i18n="price-from">от</span> 650 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-img-wrapper"><img src="img/tovar4.png" alt="Item"></div>
+                <div class="product-info">
+                    <h4 class="product-title" data-i18n="t4-title">Тренч «Midnight»</h4>
+                    <p class="product-desc" data-i18n="t4-desc">Тренч из непромокаемой ткани глубокого темно-синего цвета с шелковой принтованной подкладкой.</p>
                     <div class="product-bottom">
                         <span class="product-price">1 850 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Tovar 3 -->
             <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar3.png" alt="Коллекция сумок N|S">
-                </div>
+                <div class="product-img-wrapper"><img src="img/tovar5.png" alt="Item"></div>
                 <div class="product-info">
-                    <h4 class="product-title">Сумки & Тоуты N|S</h4>
-                    <p class="product-desc">Хлопковые тоуты с монохромной графикой и структурированные кожаные сумки цвета глубокой сливы.</p>
+                    <h4 class="product-title" data-i18n="t5-title">Кожаные Лоферы</h4>
+                    <p class="product-desc" data-i18n="t5-desc">Двухцветные лоферы с тиснением тонкого цветка и латунной плашкой N|S на каблуке.</p>
                     <div class="product-bottom">
-                        <span class="product-price">от 1 200 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                        <span class="product-price">680 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Tovar 4 -->
             <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar4.png" alt="Тренч N|S">
-                </div>
+                <div class="product-img-wrapper"><img src="img/tovar6.png" alt="Item"></div>
                 <div class="product-info">
-                    <h4 class="product-title">Тренч «Midnight»</h4>
-                    <p class="product-desc">Тренч из непромокаемой ткани глубокого темно-синего цвета с шелковой принтованной подкладкой.</p>
+                    <h4 class="product-title" data-i18n="t6-title">Лодочки «Midnight Stiletto»</h4>
+                    <p class="product-desc" data-i18n="t6-desc">Глянцевые туфли-лодочки с монограммой бренда и расписной стелькой.</p>
                     <div class="product-bottom">
-                        <span class="product-price">3 600 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                        <span class="product-price">720 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Tovar 5 -->
             <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar5.png" alt="Лоферы N|S">
-                </div>
+                <div class="product-img-wrapper"><img src="img/tovar7.png" alt="Item"></div>
                 <div class="product-info">
-                    <h4 class="product-title">Кожаные Лоферы</h4>
-                    <p class="product-desc">Двухцветные лоферы с тиснением тонкого цветка и латунной плашкой N|S на каблуке.</p>
+                    <h4 class="product-title" data-i18n="t7-title">Каблуки «Midnight Stiletto»</h4>
+                    <p class="product-desc" data-i18n="t7-desc">Элегантные туфли на тонком каблуке из премиальной кожи с монограммой N|S.</p>
                     <div class="product-bottom">
-                        <span class="product-price">1 100 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tovar 6 -->
-            <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar6.png" alt="Туфли N|S">
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Лодочки «Midnight Stiletto»</h4>
-                    <p class="product-desc">Глянцевые туфли-лодочки с монограммой бренда и расписной стелькой.</p>
-                    <div class="product-bottom">
-                        <span class="product-price">1 350 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tovar 7 -->
-            <div class="product-card reveal">
-                <div class="product-img-wrapper">
-                    <img src="img/tovar7.png" alt="Брюки жаккард N|S">
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Брюки Жаккард N|S</h4>
-                    <p class="product-desc">Плотная костюмная шерсть с легким переливом жаккардового узора паслёна.</p>
-                    <div class="product-bottom">
-                        <span class="product-price">1 950 €</span>
-                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;">Детали</button>
+                        <span class="product-price">980 €</span>
+                        <button class="btn btn-action" style="padding: 0.5rem 1rem; font-size: 0.65rem;" data-i18n="btn-details">Детали</button>
                     </div>
                 </div>
             </div>
@@ -748,49 +1143,192 @@
     <!-- Atelier / Services -->
     <section id="atelier" class="section reveal" style="padding-top: 0;">
         <div class="section-header">
-            <h2 class="section-title">Ателье и Индивидуальный Сервис</h2>
-            <p class="section-subtitle">Создание персональных шедевров</p>
+            <h2 class="section-title" data-i18n="atel-title">Ателье и Индивидуальный Сервис</h2>
+            <p class="section-subtitle" data-i18n="atel-subtitle">Создание персональных шедевров</p>
         </div>
 
         <div class="services-grid">
             <div class="service-box">
-                <h4>Bespoke Пошив</h4>
-                <p>Создание гардероба по индивидуальным меркам с подбором эксклюзивных тканей из Италии и Франции.</p>
+                <h4 data-i18n="s1-title">Bespoke Пошив</h4>
+                <p data-i18n="s1-desc">Создание гардероба по индивидуальным меркам с подбором эксклюзивных тканей из Италии и Франции.</p>
             </div>
             <div class="service-box">
-                <h4>VIP Консьерж</h4>
-                <p>Примерка и персональная презентация коллекций в любой точке мира или в закрытом VIP-зале бутика.</p>
+                <h4 data-i18n="s2-title">VIP Консьерж</h4>
+                <p data-i18n="s2-desc">Примерка и персональная презентация коллекций в любой точке мира или в закрытом VIP-зале бутика.</p>
             </div>
             <div class="service-box">
-                <h4>Персонализация</h4>
-                <p>Нанесение инициалов и уникальной ручной вышивки на сумки, обувь и подкладку верхней одежды.</p>
+                <h4 data-i18n="s3-title">Персонализация</h4>
+                <p data-i18n="s3-desc">Нанесение инициалов и уникальной ручной вышивки на сумки, обувь и подкладку верхней одежды.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Lead Form WITH FILE SAVING FUNCTIONALITY -->
+    <section id="request-section" class="section reveal">
+        <div class="lead-section">
+            <h2 class="section-title" data-i18n="req-title">Оставить Заявку</h2>
+            <p style="opacity: 0.8; font-size: 0.95rem;" data-i18n="req-subtitle">Свяжитесь с нашим персональным консультантом для индивидуального пошива или бронирования коллекции</p>
+            
+            <form class="lead-form" id="contactForm" onsubmit="event.preventDefault(); saveLeadToFile();">
+                <div class="form-group">
+                    <label data-i18n="req-label-contact">Ваш Email или Телефон</label>
+                    <input type="text" class="form-input" id="contactInput" placeholder="+7 (999) 000-00-00 или email@domain.com" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="req-label-name">Ваше Имя (необязательно)</label>
+                    <input type="text" class="form-input" id="nameInput" placeholder="Александр">
+                </div>
+                <button type="submit" class="btn" style="margin-top: 1rem; width: 100%;" data-i18n="req-btn">Отправить Заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Where to Find Us Section -->
+    <section id="locations" class="section reveal">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="loc-title">Где Нас Найти?</h2>
+            <p class="section-subtitle" data-i18n="loc-subtitle">Флагманские бутики и частные ателье бренда по всему миру</p>
+        </div>
+
+        <div class="locations-grid">
+            <div class="location-card">
+                <svg class="location-flag-svg" viewBox="0 0 512 512">
+                    <rect width="512" height="512" fill="#003399"/>
+                    <g fill="#ffcc00">
+                        <circle cx="256" cy="120" r="18"/><circle cx="256" cy="392" r="18"/>
+                        <circle cx="120" cy="256" r="18"/><circle cx="392" cy="256" r="18"/>
+                        <circle cx="160" cy="160" r="18"/><circle cx="352" cy="352" r="18"/>
+                        <circle cx="160" cy="352" r="18"/><circle cx="352" cy="160" r="18"/>
+                    </g>
+                </svg>
+                <h3 class="location-city" data-i18n="loc-brussels">Брюссель</h3>
+                <p class="location-address">Boulevard de Waterloo 42</p>
+                <p class="location-desc" data-i18n="loc-brussels-desc">Флагманский ателье-салон ЕС</p>
+            </div>
+
+            <div class="location-card">
+                <svg class="location-flag-svg" viewBox="0 0 60 30">
+                    <clipPath id="s2"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+                    <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" clip-path="url(#s2)"/>
+                    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2" clip-path="url(#s2)"/>
+                    <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" clip-path="url(#s2)"/>
+                    <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" clip-path="url(#s2)"/>
+                </svg>
+                <h3 class="location-city" data-i18n="loc-london">Лондон</h3>
+                <p class="location-address">14 New Bond Street, Mayfair</p>
+                <p class="location-desc" data-i18n="loc-london-desc">Концептуальный бутик & VIP Lounge</p>
+            </div>
+
+            <div class="location-card">
+                <svg class="location-flag-svg" viewBox="0 0 1200 600">
+                    <rect width="1200" height="200" fill="#00732f"/>
+                    <rect y="200" width="1200" height="200" fill="#fff"/>
+                    <rect y="400" width="1200" height="200" fill="#000"/>
+                    <rect width="300" height="600" fill="#ff0000"/>
+                </svg>
+                <h3 class="location-city" data-i18n="loc-dubai">Дубай</h3>
+                <p class="location-address">The Dubai Mall, Fashion Avenue</p>
+                <p class="location-desc" data-i18n="loc-dubai-desc">Гранд-бутик и закрытый галерейный зал</p>
+            </div>
+
+            <div class="location-card">
+                <svg class="location-flag-svg" viewBox="0 0 900 600">
+                    <rect fill="#fff" width="900" height="600"/>
+                    <rect fill="#d52b1e" y="400" width="900" height="200"/>
+                    <rect fill="#0039a6" y="200" width="900" height="200"/>
+                </svg>
+                <h3 class="location-city" data-i18n="loc-moscow">Москва</h3>
+                <p class="location-address">Столешников переулок, 11</p>
+                <p class="location-desc" data-i18n="loc-moscow-desc">Частное кутюрное ателье N|S</p>
+            </div>
+
+            <div class="location-card">
+                <svg class="location-flag-svg" viewBox="0 0 900 600">
+                    <rect width="300" height="600" fill="#002395"/>
+                    <rect x="300" width="300" height="600" fill="#fff"/>
+                    <rect x="600" width="300" height="600" fill="#ed2939"/>
+                </svg>
+                <h3 class="location-city" data-i18n="loc-paris">Париж</h3>
+                <p class="location-address">18 Place Vendôme</p>
+                <p class="location-desc" data-i18n="loc-paris-desc">Галерея Высокой Моды & Салон</p>
             </div>
         </div>
     </section>
 
     <!-- Editorial Quote -->
     <section class="editorial-quote reveal">
-        <blockquote>«Роскошь — это способность вызывать восхищение, не произнося ни слова».</blockquote>
+        <blockquote data-i18n="quote">«Роскошь — это способность вызывать восхищение, не произнося ни слова».</blockquote>
     </section>
 
+    <!-- ENHANCED AI ASSISTANT WIDGET & INTERACTIVE DIALOGUE -->
+    <div class="ai-assistant-wrapper">
+        
+        <!-- Interactive Chat Window -->
+        <div class="ai-chat-box" id="aiChatBox">
+            <div class="chat-header">
+                <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                    <span data-i18n="ai-chat-title">N|S AI Concierge</span>
+                </h4>
+                <button class="chat-close-btn" onclick="toggleAiChat()">✕</button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-msg bot" data-i18n="ai-greeting">Здравствуйте! Я ваш виртуальный консьерж N|S. Чем я могу вам помочь?</div>
+            </div>
+
+            <div class="chat-quick-suggestions">
+                <button class="chip-btn" onclick="sendQuickMsg('boutiques')">📍 Бутики</button>
+                <button class="chip-btn" onclick="sendQuickMsg('bespoke')">✂️ Пошив</button>
+                <button class="chip-btn" onclick="sendQuickMsg('delivery')">💎 Доставка</button>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Напишите ваш вопрос..." onkeypress="if(event.key==='Enter') sendUserMessage()">
+                <button class="chat-send-btn" onclick="sendUserMessage()">➔</button>
+            </div>
+        </div>
+
+        <!-- Initial Greeting Bubble -->
+        <div class="ai-bubble" id="aiBubble" onclick="toggleAiChat()">
+            <span data-i18n="ai-greeting-short">Вам что-то подсказать? Нажмите для чата 💬</span>
+        </div>
+
+        <!-- Beautiful AI Button Icon -->
+        <button class="ai-btn" id="aiBtn" onclick="toggleAiChat()" title="AI Concierge">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="url(#aiGrad)"/>
+                <defs>
+                    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#D4C5B9" />
+                        <stop offset="100%" stop-color="#2A171F" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </button>
+    </div>
+
     <!-- Toast Notification -->
-    <div id="toast" class="toast">Запрос отправлен. Наш персональный стилист свяжется с вами.</div>
+    <div id="toast" class="toast" data-i18n="toast-msg">Заявка сохранена в файл! Наш стилист свяжется с вами.</div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
                 <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">N | S ATELIER</h4>
-                <p style="max-width: 300px;">Премиальный дом моды, объединяющий эстетику минимализма, благородство фактур и загадочность растительных мотивов.</p>
+                <p style="max-width: 300px;" data-i18n="footer-about">Премиальный дом моды, объединяющий эстетику минимализма, благородство фактур и загадочность растительных мотивов.</p>
             </div>
             <div class="footer-col">
-                <h4>Локации</h4>
-                <p>The Dubai Mall, Fashion Avenue</p>
-                <p>Москва, Столешников пер.</p>
-                <p>Париж, Place Vendôme</p>
+                <h4 data-i18n="footer-loc-title">Локации</h4>
+                <p>Брюссель • Boulevard de Waterloo</p>
+                <p>Лондон • New Bond Street</p>
+                <p>Дубай • Fashion Avenue</p>
+                <p>Москва • Столешников пер.</p>
+                <p>Париж • Place Vendôme</p>
             </div>
             <div class="footer-col">
-                <h4>Контакты</h4>
+                <h4 data-i18n="footer-contacts">Контакты</h4>
                 <a href="mailto:vip@ns-atelier.com">vip@ns-atelier.com</a>
                 <a href="tel:+971000000000">+971 4 000 0000</a>
                 <a href="#">Instagram</a>
@@ -801,76 +1339,376 @@
         </div>
     </footer>
 
-    <!-- JavaScript Animations -->
+    <!-- JavaScript Animations & AI Engine -->
     <script>
+        let currentLang = 'ru';
+
+        // Translation Map
+        const translations = {
+            ru: {
+                "nav-about": "О Бренде",
+                "nav-boutique": "Бутик",
+                "nav-collection": "Коллекция",
+                "nav-request": "Заявка",
+                "nav-locations": "Где нас найти",
+                "hero-title": "N | S ATELIER",
+                "hero-desc": "Архитектурная эстетика «Quiet Luxury». Изысканный баланс глубоких темных тонов, мягкого бежа и филигранных деталей с нотками паслёна.",
+                "hero-btn": "Смотреть Лукбук",
+                "about-title": "Философия Ночной Красавицы",
+                "about-p1": "Бренд N|S создаёт гардероб для ценителей интеллектуальной элегантности. Наш визуальный код построен на тихой роскоши, безупречных линиях и благородных материалах.",
+                "about-p2": "Каждая деталь — от кастомной пуговицы с тиснением логотипа до скрытой подкладки с авторским цветком ночного паслёна — подчеркивает таинственную привлекательность своего владельца.",
+                "code-title": "Код Бренда",
+                "code-1": "— Глубокие оттенки ночи и графита",
+                "code-2": "— Шелковые жаккарды и шерсть высочайшей плотности",
+                "code-3": "— Завуалированные растительные вышивки ручной работы",
+                "boutique-title": "Флагманский Бутик",
+                "boutique-subtitle": "The Dubai Mall • Пространство Архитектурного Минимализма",
+                "cap-exterior": "Фасад & Вывеска N|S",
+                "cap-interior": "Интерьер & Атмосфера",
+                "coll-title": "Эксклюзивная Коллекция",
+                "coll-subtitle": "Избранные предметы сезонной коллекции",
+                "t1-title": "Образ «Nightshade Silk»",
+                "t1-desc": "Полупрозрачная шелковая блуза с тональным растительным принтом и широкими брюками.",
+                "t2-title": "Рубашка «Dark Linen»",
+                "t2-desc": "Лен глубокого черного оттенка с аккуратной ручной вышивкой ветви паслёна на воротнике.",
+                "t3-title": "Сумки & Тоуты N|S",
+                "t3-desc": "Хлопковые тоуты с монохромной графикой и структурированные кожаные сумки цвета глубокой сливы.",
+                "t4-title": "Тренч «Midnight»",
+                "t4-desc": "Тренч из непромокаемой ткани глубокого темно-синего цвета с шелковой принтованной подкладкой.",
+                "t5-title": "Кожаные Лоферы",
+                "t5-desc": "Двухцветные лоферы с тиснением тонкого цветка и латунной плашкой N|S на каблуке.",
+                "t6-title": "Лодочки «Midnight Stiletto»",
+                "t6-desc": "Глянцевые туфли-лодочки с монограммой бренда и расписной стелькой.",
+                "t7-title": "Каблуки «Midnight Stiletto»",
+                "t7-desc": "Элегантные туфли на тонком каблуке из премиальной кожи с монограммой N|S.",
+                "price-from": "от",
+                "btn-details": "Детали",
+                "atel-title": "Ателье и Индивидуальный Сервис",
+                "atel-subtitle": "Создание персональных шедевров",
+                "s1-title": "Bespoke Пошив",
+                "s1-desc": "Создание гардероба по индивидуальным меркам с подбором эксклюзивных тканей из Италии и Франции.",
+                "s2-title": "VIP Консьерж",
+                "s2-desc": "Примерка и персональная презентация коллекций в любой точке мира или в закрытом VIP-зале бутика.",
+                "s3-title": "Персонализация",
+                "s3-desc": "Нанесение инициалов и уникальной ручной вышивки на сумки, обувь и подкладку верхней одежды.",
+                "req-title": "Оставить Заявку",
+                "req-subtitle": "Свяжитесь с нашим персональным консультантом для индивидуального пошива или бронирования коллекции",
+                "req-label-contact": "Ваш Email или Телефон",
+                "req-label-name": "Ваше Имя (необязательно)",
+                "req-btn": "Отправить Заявку",
+                "loc-title": "Где Нас Найти?",
+                "loc-subtitle": "Флагманские бутики и частные ателье бренда по всему миру",
+                "loc-brussels": "Брюссель",
+                "loc-brussels-desc": "Флагманский ателье-салон ЕС",
+                "loc-london": "Лондон",
+                "loc-london-desc": "Концептуальный бутик & VIP Lounge",
+                "loc-dubai": "Дубай",
+                "loc-dubai-desc": "Гранд-бутик и закрытый галерейный зал",
+                "loc-moscow": "Москва",
+                "loc-moscow-desc": "Частное кутюрное ателье N|S",
+                "loc-paris": "Париж",
+                "loc-paris-desc": "Галерея Высокой Моды & Салон",
+                "quote": "«Роскошь — это способность вызывать восхищение, не произнося ни слова».",
+                "toast-msg": "Заявка сохранена в файл! Наш стилист свяжется с вами.",
+                "footer-about": "Премиальный дом моды, объединяющий эстетику минимализма, благородство фактур и загадочность растительных мотивов.",
+                "footer-loc-title": "Локации",
+                "footer-contacts": "Контакты",
+                "ai-chat-title": "N|S ИИ Консьерж",
+                "ai-greeting": "Здравствуйте! Я ваш виртуальный консьерж N|S. Чем я могу вам помочь?",
+                "ai-greeting-short": "Вам что-то подсказать? Нажмите для чата 💬"
+            },
+            en: {
+                "nav-about": "About Us",
+                "nav-boutique": "Boutique",
+                "nav-collection": "Collection",
+                "nav-request": "Request",
+                "nav-locations": "Find Us",
+                "hero-title": "N | S ATELIER",
+                "hero-desc": "Architectural aesthetic of 'Quiet Luxury'. An exquisite balance of deep dark tones, soft beige, and filigree nightshade motifs.",
+                "hero-btn": "View Lookbook",
+                "about-title": "Nightshade Philosophy",
+                "about-p1": "The N|S brand creates a wardrobe for connoisseurs of intellectual elegance. Our visual code is built on quiet luxury, flawless lines, and noble fabrics.",
+                "about-p2": "Every detail — from custom buttons embossed with our emblem to hidden linings featuring nightshade florals — enhances the mysterious allure of its owner.",
+                "code-title": "Brand Code",
+                "code-1": "— Deep shades of night and graphite",
+                "code-2": "— Silk jacquards and highest density wool",
+                "code-3": "— Subtle, handcrafted floral embroidery",
+                "boutique-title": "Flagship Boutique",
+                "boutique-subtitle": "The Dubai Mall • Architectural Minimalism Space",
+                "cap-exterior": "N|S Exterior & Signage",
+                "cap-interior": "Interior & Atmosphere",
+                "coll-title": "Exclusive Collection",
+                "coll-subtitle": "Curated pieces of the seasonal collection",
+                "t1-title": "'Nightshade Silk' Look",
+                "t1-desc": "Semi-sheer silk blouse with tonal floral print accompanied by wide-leg trousers.",
+                "t2-title": "'Dark Linen' Shirt",
+                "t2-desc": "Deep black linen shirt featuring delicate hand-embroidered nightshade stem on the collar.",
+                "t3-title": "N|S Bags & Totes",
+                "t3-desc": "Monochrome canvas totes and structured leather bags in deep plum shade.",
+                "t4-title": "'Midnight' Trench Coat",
+                "t4-desc": "Waterproof trench coat in deep midnight blue with printed silk lining.",
+                "t5-title": "Leather Loafers",
+                "t5-desc": "Two-tone loafers featuring subtle floral embossing and brass N|S heel plate.",
+                "t6-title": "'Midnight Stiletto' Pumps",
+                "t6-desc": "Glossy leather pumps adorned with brand monogram and painted insole.",
+                "t7-title": "'Midnight Stiletto' Heels",
+                "t7-desc": "Elegant high heels crafted from premium leather featuring the N|S monogram.",
+                "price-from": "from",
+                "btn-details": "Details",
+                "atel-title": "Atelier & Bespoke Services",
+                "atel-subtitle": "Crafting personal masterpieces",
+                "s1-title": "Bespoke Tailoring",
+                "s1-desc": "Custom wardrobe tailoring according to individual measurements with rare fabrics from Italy and France.",
+                "s2-title": "VIP Concierge",
+                "s2-desc": "Private fittings and collection presentations worldwide or in our boutique's VIP lounge.",
+                "s3-title": "Personalization",
+                "s3-desc": "Hand-stitched initials and unique embroidery on bags, footwear, and outer linings.",
+                "req-title": "Submit a Request",
+                "req-subtitle": "Get in touch with our personal advisor for bespoke tailoring or collection reservations",
+                "req-label-contact": "Your Email or Phone Number",
+                "req-label-name": "Your Name (optional)",
+                "req-btn": "Submit Request",
+                "loc-title": "Where To Find Us",
+                "loc-subtitle": "Flagship boutiques and private ateliers worldwide",
+                "loc-brussels": "Brussels",
+                "loc-brussels-desc": "EU Flagship Atelier-Salon",
+                "loc-london": "London",
+                "loc-london-desc": "Concept Boutique & VIP Lounge",
+                "loc-dubai": "Dubai",
+                "loc-dubai-desc": "Grand Boutique & Gallery Lounge",
+                "loc-moscow": "Moscow",
+                "loc-moscow-desc": "Private Couture Atelier N|S",
+                "loc-paris": "Paris",
+                "loc-paris-desc": "Haute Couture Gallery & Salon",
+                "quote": "“Luxury is the ability to inspire admiration without speaking a word.”",
+                "toast-msg": "Request saved to file! Our personal stylist will contact you shortly.",
+                "footer-about": "A luxury fashion house combining minimalist aesthetics, noble textures, and botanical mystery.",
+                "footer-loc-title": "Locations",
+                "footer-contacts": "Contacts",
+                "ai-chat-title": "N|S AI Concierge",
+                "ai-greeting": "Hello! I am your N|S virtual concierge. How may I assist you today?",
+                "ai-greeting-short": "Can I help you with anything? Click to chat 💬"
+            },
+            ar: {
+                "nav-about": "عن العلامة",
+                "nav-boutique": "البوتيك",
+                "nav-collection": "التشكيلة",
+                "nav-request": "تقديم طلب",
+                "nav-locations": "مواقعنا",
+                "hero-title": "N | S ATELIER",
+                "hero-desc": "الجماليات المعمارية لـ «الرفاهية الهادئة». توازن ساحر بين التدرجات الداكنة والبيج الناعم مع لمسات نباتية دقيقة.",
+                "hero-btn": "عرض الكتالوج",
+                "about-title": "فلسفة زهرة الليل",
+                "about-p1": "ابتكرت دار N|S خزانة ملابس لعشاق الأناقة الفكرية. يعتمد رمزنا البصري على الفخامة الهادئة والخطوط المتقنة والأقمشة النبيلة.",
+                "about-p2": "كل تفصيل — بدءاً من الأزرار المخصصة المحفورة بشعارنا إلى البطانة الخفية المطرزة بزهور اللفاح — يبرز الجاذبية الغامضة لمالكها.",
+                "code-title": "رمز العلامة",
+                "code-1": "— ظلال عميقة من ظلام الليل والغرافيت",
+                "code-2": "— حرير الجاكار وصوف عالي الكثافة",
+                "code-3": "— تطريز يدوي نباتي راقٍ وخفي",
+                "boutique-title": "البوتيك الرئيسي",
+                "boutique-subtitle": "دبي مول • مساحة البساطة المعمارية",
+                "cap-exterior": "واجهة وبوتيك N|S",
+                "cap-interior": "التصميم الداخلي والأجواء",
+                "coll-title": "المجموعة الحصرية",
+                "coll-subtitle": "قطع مختارة من مجموعة الموسم",
+                "t1-title": "إطلالة «Nightshade Silk»",
+                "t1-desc": "بلوزة حريرية شبه شفافة بطبعة نباتية متناسقة مع بنطال واسع.",
+                "t2-title": "قميص «Dark Linen»",
+                "t2-desc": "قميص كتان أسود داكن مع تطريز يدوي ناعم لفرع النبات على الياقة.",
+                "t3-title": "حقائب N|S",
+                "t3-desc": "حقائب قماشية أحادية اللون وحقائب جلدية بلمسات البرقوق الداكن.",
+                "t4-title": "معطف «Midnight»",
+                "t4-desc": "معطف مقاوم للماء باللون الأزرق الداكن مع بطانة حريرية مطبوعة.",
+                "t5-title": "حذاء لوفر جلدي",
+                "t5-desc": "حذاء لوفر بلونين مع نقش زهرة ناعم ولوحة نحاسية على الكعب.",
+                "t6-title": "حذاء «Midnight Stiletto»",
+                "t6-desc": "حذاء كعب عالٍ لامع مع شعار العلامة ونعل داخلي مزخرف.",
+                "t7-title": "حذاء كعب عالٍ «Midnight Stiletto»",
+                "t7-desc": "حذاء كعب عالٍ أنيق مصنوع من الجلد الفاخر مع شعار N|S.",
+                "price-from": "من",
+                "btn-details": "التفاصيل",
+                "atel-title": "الأتلييه والخدمات الخاصة",
+                "atel-subtitle": "صياغة تحف شخصية فريدة",
+                "s1-title": "خياطة حصرية (Bespoke)",
+                "s1-desc": "تفصيل خاص وفقاً للمقاسات الشخصية مع اختيار أقمشة نادرة من إيطاليا وفرنسا.",
+                "s2-title": "خدمة VIP الخاصة",
+                "s2-desc": "جلسات قياس وعروض خاصة في أي مكان في العالم أو في صالة VIP الخاصة بنا.",
+                "s3-title": "التخصيص الشخصي",
+                "s3-desc": "تطريز الحروف الأولى والزخارف اليدوية على الحقائب والأحذية والبطانات.",
+                "req-title": "تقديم طلب",
+                "req-subtitle": "تواصل مع مستشارنا الشخصي لتفصيل خاص أو حجز من المجموعة",
+                "req-label-contact": "البريد الإلكتروني أو رقم الهاتف",
+                "req-label-name": "الاسم (اختياري)",
+                "req-btn": "إرسال الطلب",
+                "loc-title": "أين تجدنا؟",
+                "loc-subtitle": "بوتيكاتنا الرئيسية وأتلييهاتنا الخاصة حول العالم",
+                "loc-brussels": "بروكسل",
+                "loc-brussels-desc": "أتلييه وبوتيك الاتحاد الأوروبي الرئيسي",
+                "loc-london": "لندن",
+                "loc-london-desc": "بوتيك مفاهيمي وصالة VIP",
+                "loc-dubai": "دبي",
+                "loc-dubai-desc": "جراند بوتيك وصالة معرض خصرية",
+                "loc-moscow": "موسكو",
+                "loc-moscow-desc": "أتلييه الأزياء الراقية الخاص N|S",
+                "loc-paris": "باريس",
+                "loc-paris-desc": "معرض وصالون الأزياء الراقية",
+                "quote": "«الفخامة هي القدرة على إثارة الإعجاب دون نطق كلمة واحدة.»",
+                "toast-msg": "تم حفظ الطلب في ملف! سيتواصل معك منسق الأزياء قريبًا.",
+                "footer-about": "دار أزياء فاخرة تجمع بين البساطة المعمارية وغنى الخامات وسحر الطبيعة الغامض.",
+                "footer-loc-title": "المواقع",
+                "footer-contacts": "التواصل",
+                "ai-chat-title": "N|S ИИ Консьерж",
+                "ai-greeting": "مرحباً بك! أنا مساعدك الافتراضي في دار N|S. كيف يمكنني مساعدتك؟",
+                "ai-greeting-short": "هل تريد أي مساعدة؟ اضغط للمحادثة 💬"
+            }
+        };
+
+        // SAVE LEAD TO TXT FILE
+        function saveLeadToFile() {
+            const contact = document.getElementById('contactInput').value;
+            const name = document.getElementById('nameInput').value || 'Не указано';
+            const date = new Date().toLocaleString();
+
+            const fileContent = `=== ЗАЯВКА N|S ATELIER ===\nДата и время: ${date}\nИмя клиента: ${name}\nКонтактные данные: ${contact}\n===========================\n`;
+
+            const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `заявка_NS_Atelier_${Date.now()}.txt`;
+            link.click();
+
+            showToast();
+            document.getElementById('contactForm').reset();
+        }
+
+        // AI CHAT ENGINE
+        function toggleAiChat() {
+            const chatBox = document.getElementById('aiChatBox');
+            const bubble = document.getElementById('aiBubble');
+            chatBox.classList.toggle('active');
+            bubble.classList.remove('show');
+        }
+
+        function appendMessage(text, sender) {
+            const chatMsgs = document.getElementById('chatMessages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-msg ${sender}`;
+            msgDiv.textContent = text;
+            chatMsgs.appendChild(msgDiv);
+            chatMsgs.scrollTop = chatMsgs.scrollHeight;
+        }
+
+        function sendUserMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if(!text) return;
+
+            appendMessage(text, 'user');
+            input.value = '';
+
+            setTimeout(() => {
+                generateAiResponse(text.toLowerCase());
+            }, 600);
+        }
+
+        function sendQuickMsg(type) {
+            let prompt = '';
+            if(type === 'boutiques') prompt = currentLang === 'ru' ? 'Где находятся ваши бутики?' : 'Where are your boutiques?';
+            if(type === 'bespoke') prompt = currentLang === 'ru' ? 'Как заказать индивидуальный пошив?' : 'How to order bespoke tailoring?';
+            if(type === 'delivery') prompt = currentLang === 'ru' ? 'Есть ли у вас VIP доставка?' : 'Do you offer VIP delivery?';
+
+            appendMessage(prompt, 'user');
+            setTimeout(() => {
+                generateAiResponse(type);
+            }, 500);
+        }
+
+        function generateAiResponse(input) {
+            let reply = '';
+            
+            if (input.includes('boutiques') || input.includes('бутик') || input.includes('где') || input.includes('адрес')) {
+                reply = currentLang === 'ru' ? 
+                    'Наши флагманские бутики расположены в Дубае (The Dubai Mall), Лондоне (New Bond Street), Париже, Брюсселе и Москве.' : 
+                    'Our flagship boutiques are located in Dubai (The Dubai Mall), London (New Bond Street), Paris, Brussels, and Moscow.';
+            } else if (input.includes('bespoke') || input.includes('пошив') || input.includes('заказ') || input.includes('каблук')) {
+                reply = currentLang === 'ru' ? 
+                    'Для индивидуального bespoke-пошива и создания обуви заполните форму заявки на сайте, и наш персональный стилист свяжется с вами.' : 
+                    'For custom bespoke tailoring and shoe design, please fill out the request form, and our stylist will reach out to you.';
+            } else if (input.includes('delivery') || input.includes('доставк') || input.includes('цена') || input.includes('стоим')) {
+                reply = currentLang === 'ru' ? 
+                    'Мы предоставляем приватную международную VIP-доставку курьером прямо к вашей двери.' : 
+                    'We offer private international VIP courier delivery directly to your door.';
+            } else {
+                reply = currentLang === 'ru' ? 
+                    'Благодарю за вопрос! Я могу сориентировать вас по нашей эксклюзивной коллекции, локациям бутиков или помочь оставить заявку.' : 
+                    'Thank you for your inquiry! I can assist you regarding our collection, boutique locations, or help you submit a custom request.';
+            }
+
+            appendMessage(reply, 'bot');
+        }
+
+        // GENERAL UI UTILS
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3500);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const header = document.getElementById('header');
             const hero = document.getElementById('hero');
-            const toast = document.getElementById('toast');
             const bgNightshade = document.getElementById('bgNightshade');
+            const aiBubble = document.getElementById('aiBubble');
 
-            // 1. Scroll-driven Nightshade Rotation & Header Adjustments
+            const langBtns = {
+                en: document.getElementById('lang-en'),
+                ru: document.getElementById('lang-ru'),
+                ar: document.getElementById('lang-ar')
+            };
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                Object.keys(langBtns).forEach(key => {
+                    langBtns[key].classList.toggle('active', key === lang);
+                });
+
+                document.body.classList.toggle('rtl', lang === 'ar');
+                document.documentElement.lang = lang;
+
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+            }
+
+            langBtns.en.addEventListener('click', () => setLanguage('en'));
+            langBtns.ru.addEventListener('click', () => setLanguage('ru'));
+            langBtns.ar.addEventListener('click', () => setLanguage('ar'));
+
+            setTimeout(() => {
+                if(!document.getElementById('aiChatBox').classList.contains('active')) {
+                    aiBubble.classList.add('show');
+                }
+            }, 5000);
+
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
-
-                // Rotate background Nightshade SVG on scroll
-                const rotation = scrollY * 0.12; 
-                bgNightshade.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
-
-                // Header styling
-                if (scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-
-                // Parallax Effect for Hero section
+                bgNightshade.style.transform = `translate(-50%, -50%) rotate(${scrollY * 0.12}deg)`;
+                header.classList.toggle('scrolled', scrollY > 50);
                 if (scrollY < window.innerHeight) {
                     hero.style.transform = `translateY(${scrollY * 0.25}px)`;
                 }
             });
 
-            // 2. Scroll Reveal Intersection Observer
-            const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('active');
                 });
-            }, {
-                threshold: 0.15
-            });
+            }, { threshold: 0.15 });
 
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            // 3. Interactive Buttons Click (Toast feedback)
-            const actionBtns = document.querySelectorAll('.btn-action');
-            actionBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toast.classList.add('show');
-                    setTimeout(() => {
-                        toast.classList.remove('show');
-                    }, 3500);
-                });
-            });
-
-            // 4. Subtle Tilt Effect on Product Cards
-            const cards = document.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) translateY(-5px)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-                });
-            });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         });
     </script>
 </body>
